@@ -87,8 +87,7 @@ export const Checkout = () => {
     `;
 
       try {
-        await fetch(`${process.env.REACT_APP_BASE_URL}/api/send-email`, {
-
+        await fetch("https://yz-backend-lemon.vercel.app/api/send-email", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
@@ -98,8 +97,7 @@ export const Checkout = () => {
           })
         });
 
-        await fetch(`${process.env.REACT_APP_BASE_URL}/api/send-email`, {
-
+        await fetch("https://yz-backend-lemon.vercel.app/api/send-email", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
