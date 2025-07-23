@@ -1,0 +1,18 @@
+{
+  "files": {
+    "main.css": "/static/css/main.1aa1b982.css",
+    "main.js": "/static/js/main.d05c6421.js",
+    "static/media/banner4.jpg": "/static/media/banner4.2ede77a75e1e1453ee82.jpg",
+    "static/media/banner1.jpg": "/static/media/banner1.1b862f79f457e96c63ff.jpg",
+    "static/media/yzlogo.jpg": "/static/media/yzlogo.cf965b044a6b1bcc1c7a.jpg",
+    "static/media/banner3.jpg": "/static/media/banner3.d35438d5fcf2c0bd0c30.jpg",
+    "static/media/banner2.jpg": "/static/media/banner2.5f0ad428cbbde080bba7.jpg",
+    "index.html": "/index.html",
+    "main.1aa1b982.css.map": "/static/css/main.1aa1b982.css.map",
+    "main.d05c6421.js.map": "/static/js/main.d05c6421.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.1aa1b982.css",
+    "static/js/main.d05c6421.js"
+  ]
+}
