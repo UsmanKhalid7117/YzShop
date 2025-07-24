@@ -74,6 +74,7 @@ export const Checkout = () => {
       <h2>New Order Received</h2>
       <p><strong>Order ID:</strong> ${currentOrder._id}</p>
       <p><strong>Products:</strong> ${products}</p>
+      <p><strong>PhoneNumber:</strong> ${selectedAddress.phoneNumber}</p>
       <p><strong>Address:</strong> ${address}</p>
       <p>This product was ordered by <strong>${loggedInUser.email}</strong>.</p>
     `;

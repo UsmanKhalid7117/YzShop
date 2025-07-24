@@ -39,6 +39,7 @@ import FavoriteBorder from '@mui/icons-material/FavoriteBorder'
 import Favorite from '@mui/icons-material/Favorite'
 import LocalShippingOutlinedIcon from '@mui/icons-material/LocalShippingOutlined'
 import CachedOutlinedIcon from '@mui/icons-material/CachedOutlined'
+import ContentCopyIcon from '@mui/icons-material/ContentCopy' // ✅ Copy icon
 import {
   createWishlistItemAsync,
   deleteWishlistItemByIdAsync,
@@ -152,6 +153,12 @@ export const ProductDetails = () => {
   const handleBack = () => setActiveStep(prev => prev - 1)
   const handleStepChange = (step) => setActiveStep(step)
 
+  const handleCopyUrl = () => {
+    navigator.clipboard.writeText(window.location.href)
+      .then(() => toast.success('Product link copied!'))
+      .catch(() => toast.error('Failed to copy link'))
+  }
+
   const btnStyle = {
     padding: '10px 15px',
     fontSize: '1rem',
@@ -214,7 +221,7 @@ export const ProductDetails = () => {
 
             {!loggedInUser?.isAdmin && (
               <Stack spacing={2}>
-                <Stack direction='row' spacing={2} alignItems='center'>
+                <Stack direction='row' spacing={2} alignItems='center' flexWrap="wrap">
                   <MotionConfig whileHover={{ scale: 1.05 }}>
                     <motion.button onClick={() => setQuantity(Math.max(1, quantity - 1))} style={{ ...btnStyle, border: '1px solid black', background: 'transparent' }}>-</motion.button>
                     <Typography>{quantity}</Typography>
@@ -234,8 +241,23 @@ export const ProductDetails = () => {
                       icon={<FavoriteBorder />}
                       checkedIcon={<Favorite sx={{ color: 'red' }} />}
                     />
+                    
                   </Stack>
+
+                  {/* ✅ Copy Link Button */}
+                  
+
                 </Stack>
+                <Stack mt={3}>
+                    <Button
+                      variant="outlined"
+                      startIcon={<ContentCopyIcon />}
+                      onClick={handleCopyUrl}
+                      sx={{ textTransform: 'none', whiteSpace: 'nowrap' }}
+                    >
+                      Copy Product Link to Share
+                    </Button>
+                  </Stack>
               </Stack>
             )}
 
