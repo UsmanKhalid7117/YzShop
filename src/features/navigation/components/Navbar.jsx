@@ -66,7 +66,6 @@ export const Navbar = ({ isProductList = false }) => {
             variant="h5"
             noWrap
             component="a"
-            href="/"
             sx={{
               fontWeight: 700,
               letterSpacing: '.2rem',
