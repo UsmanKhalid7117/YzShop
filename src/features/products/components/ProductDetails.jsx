@@ -130,24 +130,52 @@ export const ProductDetails = () => {
     }
   }, [dispatch])
 
+  // const handleAddToCart = () => {
+  //   if (!loggedInUser?._id) return
+  //   const item = { user: loggedInUser._id, product: id, quantity }
+  //   dispatch(addToCartAsync(item))
+  //   setQuantity(1)
+  // }
   const handleAddToCart = () => {
-    if (!loggedInUser?._id) return
-    const item = { user: loggedInUser._id, product: id, quantity }
-    dispatch(addToCartAsync(item))
-    setQuantity(1)
+    if (!loggedInUser?._id) {
+      toast.error("Please login to add items to cart");
+      navigate("/login");
+      return;
+    }
+    const item = { user: loggedInUser._id, product: id, quantity };
+    dispatch(addToCartAsync(item));
+    setQuantity(1);
+  };
+
+
+  // const handleWishlistToggle = (e) => {
+  //   if (!loggedInUser?._id) return
+  //   if (e.target.checked) {
+  //     dispatch(createWishlistItemAsync({ user: loggedInUser._id, product: id }))
+  //   } else {
+  //     const wishlistItem = wishlistItems?.find(item => item?.product?._id === id)
+  //     if (wishlistItem?._id) {
+  //       dispatch(deleteWishlistItemByIdAsync(wishlistItem._id))
+  //     }
+  //   }
+  // }
+  const handleWishlistToggle = (e) => {
+  if (!loggedInUser?._id) {
+    toast.error("Please login to add items to wishlist");
+    navigate("/login");
+    return;
   }
 
-  const handleWishlistToggle = (e) => {
-    if (!loggedInUser?._id) return
-    if (e.target.checked) {
-      dispatch(createWishlistItemAsync({ user: loggedInUser._id, product: id }))
-    } else {
-      const wishlistItem = wishlistItems?.find(item => item?.product?._id === id)
-      if (wishlistItem?._id) {
-        dispatch(deleteWishlistItemByIdAsync(wishlistItem._id))
-      }
+  if (e.target.checked) {
+    dispatch(createWishlistItemAsync({ user: loggedInUser._id, product: id }));
+  } else {
+    const wishlistItem = wishlistItems?.find(item => item?.product?._id === id);
+    if (wishlistItem?._id) {
+      dispatch(deleteWishlistItemByIdAsync(wishlistItem._id));
     }
   }
+};
+
 
   const handleNext = () => setActiveStep(prev => prev + 1)
   const handleBack = () => setActiveStep(prev => prev - 1)
@@ -241,23 +269,23 @@ export const ProductDetails = () => {
                       icon={<FavoriteBorder />}
                       checkedIcon={<Favorite sx={{ color: 'red' }} />}
                     />
-                    
+
                   </Stack>
 
                   {/* ✅ Copy Link Button */}
-                  
+
 
                 </Stack>
                 <Stack mt={3}>
-                    <Button
-                      variant="outlined"
-                      startIcon={<ContentCopyIcon />}
-                      onClick={handleCopyUrl}
-                      sx={{ textTransform: 'none', whiteSpace: 'nowrap' }}
-                    >
-                      Copy Product Link to Share
-                    </Button>
-                  </Stack>
+                  <Button
+                    variant="outlined"
+                    startIcon={<ContentCopyIcon />}
+                    onClick={handleCopyUrl}
+                    sx={{ textTransform: 'none', whiteSpace: 'nowrap' }}
+                  >
+                    Copy Product Link to Share
+                  </Button>
+                </Stack>
               </Stack>
             )}
 
